@@ -38,6 +38,7 @@ class ImovelController extends Controller
         $qtd= $request['qtd'] ? : 10;
         $page = $request['page'] ? : 1;
         $buscar = $request['buscar'];
+        $tipo = $request['tipo'];
 
         Paginator::currentPageResolver(function () use ($page){
             return $page;
@@ -46,7 +47,11 @@ class ImovelController extends Controller
         if($buscar){
             $imoveis = DB::table('imoveis')->where('cidadeEndereco', '=', $buscar)->paginate($qtd);
         } else {
-            $imoveis = DB::table('imoveis')->paginate($qtd);
+            if($tipo){
+                $imoveis = DB::table('imoveis')->where('tipo', '=', $tipo)->paginate($qtd);
+            } else{
+                $imoveis = DB::table('imoveis')->paginate($qtd);
+            }
         }
 
         $imoveis = $imoveis->appends(Request::capture()->except('page'));
