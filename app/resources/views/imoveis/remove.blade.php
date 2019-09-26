@@ -3,7 +3,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Remover o imóvel</div>
         <div class="panel-body">
-            <form action="" method="post">
+            <form action="{{ route('imoveis.destroy', $imovel->id) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Tem certeza que deseja remover o imóvel?</h4>

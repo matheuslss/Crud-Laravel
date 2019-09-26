@@ -2,6 +2,18 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">Lista de Imóveis</div>
+        <form mothod="get" action="{{ route('imoveis.index', 'buscar') }}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="buscar" placeholder="Digite o nome da cidade">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Pesquisar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-bordered">
@@ -18,7 +30,7 @@
                             <tr>
                                 <td>{{$imovel->descricao}}</td>
                                 <td>{{$imovel->cidadeEndereco}}</td>
-                                <td>{{$imovel->preco}}</td>
+                                <td>R$ {{number_format($imovel->preco, 2, ',', '.')}}</td>
                                 <td>{{$imovel->finalidade}}</td>
                                 <td>{{$imovel->tipo}}</td>
                                 <td>
@@ -31,6 +43,9 @@
                     </tbody>
                 </table>
             </div>    
+        </div>
+        <div align="center" class="row">
+            {{ $imoveis->links() }}
         </div>
     </div>
     <a href="{{route('imoveis.create')}}"><button class="btn btn-primary">Adicionar</button></a>
