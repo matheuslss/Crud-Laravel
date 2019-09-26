@@ -1,6 +1,13 @@
 @extends('shared.base')
 
 @section('content')
+        @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br>
+                @endforeach 
+            </div>
+        @endif 
 
     <div class="panel panel-default">
     
@@ -85,7 +92,8 @@
                     </div>
                 </div> 
 
-                <a href="{{ url()->previous()}}" class="btn btn-default">Voltar</a> 
+                <!-- <a href="{{ url()->previous()}}" class="btn btn-default">Voltar</a>  -->
+                <a href="{{ route('imoveis.index') }}" class="btn btn-default">Voltar</a> 
                 <button type="submit" class="btn btn-primary">Editar</button>
             </form>
 
