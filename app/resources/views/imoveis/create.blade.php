@@ -7,7 +7,7 @@
         <div class="panel-heading"><h3>Cadastre o imóvel</h3></div>
         <div class="panel-body">
         
-            <form action="" method="post">
+            <form action="{{ route ('imoveis.store') }}" method="post">
                 {{csrf_field()}}
                 <h4>Dados do imóvel</h4>
                 <hr>
@@ -34,9 +34,9 @@
                         <div class="form-group">
                          <label for="tipo">Tipo do Imóvel</label>
                          <select class="form-control" name="tipo" required>
-                            <option value="">Apartamento</option>
-                            <option value="">Casa</option>
-                            <option value="">Kitnet</option>
+                            <option>Apartamento</option>
+                            <option>Casa</option>
+                            <option>Kitnet</option>
                          </select>
                         </div>
                     </div>
@@ -44,8 +44,8 @@
                         <div class="form-group">
                          <label for="finalidade">Finalidade do imóvel</label>
                          <select class="form-control" name="finalidade" required>
-                            <option value="">Venda</option>
-                            <option value="">Locação</option>
+                            <option>Venda</option>
+                            <option>Locação</option>
                          </select>
                         </div>
                     </div>
